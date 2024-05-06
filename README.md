@@ -1,8 +1,26 @@
 ## To Run the project  V 1.0.0
 
+
+
+Future enhancements:
+
+<ul>
+    <li>Integration of Progressive Web Applications (PWA) to enhance user experience and ensure service availability offline.</li>
+    <li>Introduction of digital products to broaden the service scope and meet diverse customer needs.</li>
+    <li>Provision of multiple payment gateways, whether online or even offline, to facilitate purchasing processes.</li>
+    <li>Addition of a communication button at the bottom of the website to improve interaction and provide an easy way for customers to reach support or make inquiries.</li>
+    <li>Inclusion of comprehensive reports on the website's performance for more transparency and data analysis to improve service and better meet customer needs.</li>
+</ul>
+
+
+
+
+
+👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇
+
 **The Project: Clone the project repository from the source control system to your local machine.**
 ```
-git clone https://github.com/YacoubAl-hardari/profile-site.git
+git clone https://github.com/YacoubAl-hardari/profile_site.git
 
 ```
 
