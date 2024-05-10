@@ -8,6 +8,7 @@ use Filament\Resources\Pages\CreateRecord;
 
 class CreateEmailConfiguration extends CreateRecord
 {
+    protected static bool $canCreateAnother = false;
     protected static string $resource = EmailConfigurationResource::class;
 
     protected function getRedirectUrl(): string

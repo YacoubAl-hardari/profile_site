@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('google_recaptchas', function (Blueprint $table) {
+        Schema::create('facebook_meta_pixel_ids', function (Blueprint $table) {
             $table->id();
-            $table->string('recaptcha_site_key')->nullable();
-            $table->string('recaptcha_secret_key')->nullable();
-            $table->string('recaptcha_version');
-            
+            $table->string('meta_pixel_id');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('google_recaptchas');
+        Schema::dropIfExists('facebook_meta_pixel_ids');
     }
 };

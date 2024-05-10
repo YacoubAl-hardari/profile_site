@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.2",
         "amidesfahani/filament-tinyeditor": "^2.0",
+        "bezhansalleh/filament-google-analytics": "^2.0",
         "bezhansalleh/filament-language-switch": "^3.1",
         "filament/filament": "3.2.71",
         "filament/notifications": "3.2.71",

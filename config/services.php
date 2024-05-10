@@ -13,6 +13,13 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
+    'ANALYTICS_PROPERTY_ID'=>env('ANALYTICS_PROPERTY_ID',''),
+    'META_PIXEL_ID' => env('META_PIXEL_ID', ''),
+    'key' => [
+        'CAPTCHA_SITE_KEY'=>'',
+        'CAPTCHA_SECRET_KEY'=>''
+    ],
+
 
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
@@ -30,5 +37,7 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+  
+
 
 ];

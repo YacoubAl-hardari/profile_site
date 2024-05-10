@@ -51,31 +51,43 @@ class GoogleAnalyticResource extends Resource
             ->schema([
                Section::make()->schema([
                 Forms\Components\TextInput::make('google_analytics_id')
-                ->maxLength(255),
+                ->maxLength(255)
+                ->required(),
             Forms\Components\TextInput::make('type')
-                ->maxLength(255),
+                ->maxLength(255)
+                ->required(),
             Forms\Components\TextInput::make('project_id')
-                ->maxLength(255),
+                ->maxLength(255)
+                ->required(),
             Forms\Components\TextInput::make('private_key_id')
-                ->maxLength(255),
+                ->maxLength(255)
+                ->required(),
             Forms\Components\Textarea::make('private_key')
                 ->maxLength(65535)
+                ->required()
                 ->columnSpanFull(),
             Forms\Components\TextInput::make('client_email')
                 ->email()
-                ->maxLength(255),
+                ->maxLength(255)
+                ->required(),
             Forms\Components\TextInput::make('client_id')
-                ->maxLength(255),
+                ->maxLength(255)
+                ->required(),
             Forms\Components\TextInput::make('auth_uri')
-                ->maxLength(255),
+                ->maxLength(255)
+                ->required(),
             Forms\Components\TextInput::make('token_uri')
-                ->maxLength(255),
+                ->maxLength(255)
+                ->required(),
             Forms\Components\TextInput::make('auth_provider_x509_cert_url')
-                ->maxLength(255),
+                ->maxLength(255)
+                ->required(),
             Forms\Components\TextInput::make('client_x509_cert_url')
-                ->maxLength(255),
+                ->maxLength(255)
+                ->required(),
             Forms\Components\TextInput::make('universe_domain')
-                ->maxLength(255),
+                ->maxLength(255)
+                ->required(),
                ])->columns(4),
             ]);
     }
@@ -152,9 +164,9 @@ class GoogleAnalyticResource extends Resource
     {
         return [
             'index' => Pages\ListGoogleAnalytics::route('/'),
-            'create' => Pages\CreateGoogleAnalytic::route('/create'),
-            'view' => Pages\ViewGoogleAnalytic::route('/{record}'),
-            'edit' => Pages\EditGoogleAnalytic::route('/{record}/edit'),
+            // 'create' => Pages\CreateGoogleAnalytic::route('/create'),
+            // 'view' => Pages\ViewGoogleAnalytic::route('/{record}'),
+            // 'edit' => Pages\EditGoogleAnalytic::route('/{record}/edit'),
         ];
     }    
 }

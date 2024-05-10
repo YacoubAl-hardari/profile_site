@@ -28,27 +28,20 @@ class ShowContactUSPage extends Component
     #[Validate('required|min:3|max:500')]
     public $message;
 
-    // NarenaContact
-    // #[Validate('required')]
-    // public $captcha = null;
-    // public function updatedCaptcha($token)
-    // {
-    //     $response = Http::post(
-    //         'https://www.google.com/recaptcha/api/siteverify?secret=' .
-    //             env('CAPTCHA_SECRET_KEY') .
-    //             '&response=' . $token
-    //     );
-
-    //     $success = $response->json()['success'];
-
-    //     if (!$success) {
-    //         throw ValidationException::withMessages([
-    //             'captcha' => __('يعتقد Google أنك روبوت، يرجى التحديث والمحاولة مرة أخرى!'),
-    //         ]);
-    //     } else {
-    //         $this->captcha = true;
-    //     }
-    // }
+//     public $captcha = 0;
+ 
+// public function updatedCaptcha($token)
+// {
+//     $response = Http::post('https://www.google.com/recaptcha/api/siteverify?secret=' . env('CAPTCHA_SECRET_KEY') . '&response=' . $token);
+//     $this->captcha = $response->json()['score'];
+ 
+//     if (!$this->captcha > .3) {
+//         $this->store();
+//     } else {
+//         return session()->flash('success', 'Google thinks you are a bot, please refresh and try again');
+//     }
+ 
+// }
 
 
     public function save()

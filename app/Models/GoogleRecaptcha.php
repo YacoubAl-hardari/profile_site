@@ -12,7 +12,8 @@ class GoogleRecaptcha extends Model
     protected $table = 'google_recaptchas';
     protected $fillable = [
             'recaptcha_site_key',
-            'recaptcha_secret_key'
+            'recaptcha_secret_key',
+            'recaptcha_version',
     ];
 
 }

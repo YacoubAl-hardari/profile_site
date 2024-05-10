@@ -48,10 +48,15 @@ class GoogleRecaptchaResource extends Resource
             ->schema([
                Section::make()->schema([
                 Forms\Components\TextInput::make('recaptcha_site_key')
+                ->required()
                 ->maxLength(255),
             Forms\Components\TextInput::make('recaptcha_secret_key')
+            ->required()
                 ->maxLength(255),
-               ])->columns(2),
+            Forms\Components\TextInput::make('recaptcha_version')
+            ->required()
+                ->maxLength(255),
+               ])->columns(3),
             ]);
     }
 
@@ -62,6 +67,8 @@ class GoogleRecaptchaResource extends Resource
                 Tables\Columns\TextColumn::make('recaptcha_site_key')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('recaptcha_secret_key')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('recaptcha_version')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -102,9 +109,9 @@ class GoogleRecaptchaResource extends Resource
     {
         return [
             'index' => Pages\ListGoogleRecaptchas::route('/'),
-            'create' => Pages\CreateGoogleRecaptcha::route('/create'),
-            'view' => Pages\ViewGoogleRecaptcha::route('/{record}'),
-            'edit' => Pages\EditGoogleRecaptcha::route('/{record}/edit'),
+            // 'create' => Pages\CreateGoogleRecaptcha::route('/create'),
+            // 'view' => Pages\ViewGoogleRecaptcha::route('/{record}'),
+            // 'edit' => Pages\EditGoogleRecaptcha::route('/{record}/edit'),
         ];
     }    
 }

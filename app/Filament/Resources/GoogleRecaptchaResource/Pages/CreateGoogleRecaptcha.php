@@ -8,6 +8,7 @@ use Filament\Resources\Pages\CreateRecord;
 
 class CreateGoogleRecaptcha extends CreateRecord
 {
+    protected static bool $canCreateAnother = false;
     protected static string $resource = GoogleRecaptchaResource::class;
     protected function getRedirectUrl(): string
     {

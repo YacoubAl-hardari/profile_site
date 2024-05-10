@@ -19,7 +19,10 @@ class CategoryBlogResource extends Resource
     protected static ?string $model = CategoryBlog::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';
-
+    public static function getNavigationParentItem(): ?string
+    {
+        return __('filament-panels::pages/dashboard.blog');
+    }
     
     public static function getNavigationGroup(): string
     {

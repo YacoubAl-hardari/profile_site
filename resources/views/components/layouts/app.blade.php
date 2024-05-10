@@ -310,6 +310,18 @@
     <script src="{{ asset('front/assets/js/slick.min.js') }}"></script>
     <script src="{{ asset('front/assets/js/script.js') }}"></script>
 
+    <script src="https://www.google.com/recaptcha/api.js?render={{env('CAPTCHA_SITE_KEY')}}"></script>
+<script>
+    function handle(e) {
+        grecaptcha.ready(function () {
+            grecaptcha.execute('{{env('CAPTCHA_SITE_KEY')}}', {action: 'submit'})
+                .then(function (token) {
+                    @this.set('captcha', token);
+                });
+        })
+    }
+</script>
+
  
     @yield('script')
   </body>
