@@ -125,3 +125,17 @@
 
 
 </div>
+
+
+@section('script')
+<script>
+  function handle(e) {
+      grecaptcha.ready(function () {
+          grecaptcha.execute('{{env('CAPTCHA_SITE_KEY')}}', {action: 'submit'})
+              .then(function (token) {
+                  @this.set('captcha', token);
+              });
+      })
+  }
+</script>
+@endsection
