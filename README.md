@@ -1,4 +1,4 @@
-# Project Setup Guide v1.0.0
+# Project Setup Guide v1.0.1
 
 ## Screenshots
 <img src="https://raw.githubusercontent.com/YacoubAl-hardari/profile_site/main/screencapture-profile-site-test-2024-05-04-03_33_10.png" alt="Screenshot 1" style="width:250px; margin-right:10px;"> <img src="https://raw.githubusercontent.com/YacoubAl-hardari/profile_site/main/screencapture-profile-site-test-2024-05-04-03_33_33.png" alt="Screenshot 2" style="width:250px; margin-right:10px;"> <img src="https://raw.githubusercontent.com/YacoubAl-hardari/profile_site/main/screencapture-profile-site-test-2024-05-04-03_33_20.png" alt="Screenshot 3" style="width:250px; margin-right:10px;"> <img src="https://raw.githubusercontent.com/YacoubAl-hardari/profile_site/main/1.jpg" alt="Screenshot 4" style="width:250px; margin-right:10px;"> <img src="https://raw.githubusercontent.com/YacoubAl-hardari/profile_site/main/2.jpg" alt="Screenshot 5" style="width:250px; margin-right:10px;">
