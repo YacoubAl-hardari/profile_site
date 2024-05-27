@@ -90,6 +90,14 @@ For Sending Emails
 <p>MAIL_FROM_ADDRESS="hello@example.com"</p>
 <p>MAIL_FROM_NAME="${APP_NAME}"</p>
 
+```
+
+CAPTCHA_SITE_KEY=
+CAPTCHA_SECRET_KEY=
+ANALYTICS_PROPERTY_ID=
+META_PIXEL_ID=
+
+```
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
