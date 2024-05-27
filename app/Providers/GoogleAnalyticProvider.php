@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\Schema;
 class GoogleAnalyticProvider extends ServiceProvider
 {
     /**
@@ -15,11 +15,29 @@ class GoogleAnalyticProvider extends ServiceProvider
     public function register()
     {
        
-        // Retrieve data from the database
+     
+        
+        // Check if the database connection is established
+        try {
+            DB::connection()->getPdo();
+        } catch (\Exception $e) {
+            die("Could not connect to the database. Please check your configuration.");
+        }
+        
+        // Check if the necessary tables exist
+        $tablesExist = Schema::hasTable('google_analytics') &&
+                       Schema::hasTable('google_recaptchas') &&
+                       Schema::hasTable('facebook_meta_pixel_ids');
+        
+        if (!$tablesExist) {
+            die("One or more required tables are missing.");
+        }
+        
+        // Run the main script if tables exist
         $dataFromDatabase = DB::table('google_analytics')->latest()->first();
         $google_recaptchas = DB::table('google_recaptchas')->latest()->first();
         $facebook_meta_pixel_id = DB::table('facebook_meta_pixel_ids')->latest()->first();
-
+        
         if ($google_recaptchas) {
             $envPath = base_path('.env');
             $envContent = file_get_contents($envPath);
@@ -55,9 +73,8 @@ class GoogleAnalyticProvider extends ServiceProvider
                 file_put_contents($envPath, "\nRECAPTCHA_IMPORTED_FLAG=true", FILE_APPEND | LOCK_EX);
             }
         }
-
-        if($dataFromDatabase)
-        {
+        
+        if ($dataFromDatabase) {
             $envPath = base_path('.env');
             $analyticsPropertyId = config('services.ANALYTICS_PROPERTY_ID');
             $newAnalyticsPropertyId = $dataFromDatabase->google_analytics_id;
@@ -76,10 +93,8 @@ class GoogleAnalyticProvider extends ServiceProvider
                 // Set the flag to indicate that the import has been done
                 file_put_contents($envPath, "\nANALYTICS_IMPORTED_FLAG=true", FILE_APPEND | LOCK_EX);
             }
-
+        
             
-            
-            // config('app.ANALYTICS_PROPERTY_ID', $dataFromDatabase->google_analytics_id);
             config()->set('services.ANALYTICS_PROPERTY_ID', $dataFromDatabase->google_analytics_id);
             // Update the values in the JSON object
             $jsonArray['type'] = $dataFromDatabase->type;
@@ -93,24 +108,15 @@ class GoogleAnalyticProvider extends ServiceProvider
             $jsonArray['auth_provider_x509_cert_url'] = $dataFromDatabase->auth_provider_x509_cert_url;
             $jsonArray['client_x509_cert_url'] = $dataFromDatabase->client_x509_cert_url;
             $jsonArray['universe_domain'] = $dataFromDatabase->universe_domain;
-    
+        
             // Convert the updated PHP array back to JSON
-            $updatedJsonData = json_encode($jsonArray,JSON_UNESCAPED_SLASHES);
-            // $decodedData = json_decode($updatedJsonData, true);
-    
-            // // Access the value of ['private_key'] from the decoded JSON
-            // $privateKey = $decodedData['auth_provider_x509_cert_url'];
-            
-            // // Dump the value of ['private_key']
-            // dd($privateKey);
+            $updatedJsonData = json_encode($jsonArray, JSON_UNESCAPED_SLASHES);
             
             // Write the updated JSON data back to the file
-            Storage::disk('local')->put('analytics/service-account-credentials.json',$updatedJsonData);
-
+            Storage::disk('local')->put('analytics/service-account-credentials.json', $updatedJsonData);
         }
-
-        if($facebook_meta_pixel_id)
-        {
+        
+        if ($facebook_meta_pixel_id) {
             $envPath = base_path('.env');
             $envContent = file_get_contents($envPath);
         
@@ -134,6 +140,7 @@ class GoogleAnalyticProvider extends ServiceProvider
                 file_put_contents($envPath, "\nMETA_PIXEL_ID_IMPORTED_FLAG=true", FILE_APPEND | LOCK_EX);
             }
         }
+        
     }
 
     /**
