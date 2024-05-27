@@ -15,6 +15,7 @@ return [
     */
     'ANALYTICS_PROPERTY_ID'=>env('ANALYTICS_PROPERTY_ID',''),
     'META_PIXEL_ID' => env('META_PIXEL_ID', ''),
+    'enable_google_analytics_provider' => env('ENABLE_GOOGLE_ANALYTICS_PROVIDER', false),
     'key' => [
         'CAPTCHA_SITE_KEY'=>'',
         'CAPTCHA_SECRET_KEY'=>''
